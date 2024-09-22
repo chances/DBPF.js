@@ -1,0 +1,25 @@
+{
+  "name": "@dbpf/dbpf",
+  "version": "1.1.0",
+  "exports": {
+    ".": "./src/DBPF.ts",
+    "./promise": "./src/EventedPromise.ts",
+    "./server": "./src/ReaderServer.ts",
+    "./server/pool": "./src/ReaderServerPool.ts"
+  },
+  "publish": {
+    "exclude": [
+      "./src/polyfills/ts"
+    ],
+    "include": [
+      "./src"
+    ]
+  },
+  "tasks": {
+    "dev": "deno run --watch main.ts",
+    "test": "npm test"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1"
+  }
+}
