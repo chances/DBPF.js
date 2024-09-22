@@ -28,7 +28,26 @@ jobs:
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          
+
+  publish-jsr:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      # Used for authentication with JSR.
+      id-token: write
+ 
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - run: npx jsr publish
+
   serve:
     runs-on: ubuntu-latest
 
